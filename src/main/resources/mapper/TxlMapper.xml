@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhxy.mapper.TxlMapper">
+    <resultMap id="cyy" type="com.hhxy.domain.TxlFh">
+        <result property="bha" column="bh"></result>
+        <result property="xma" column="xm"></result>
+        <result property="dha" column="dh"></result>
+    </resultMap>
+    <insert id="add">
+        insert into txl values (#{bha},#{xm},#{dh})
+    </insert>
+    <insert id="zjmap">
+        insert into txl values (#{bh},#{xm},#{dh})
+    </insert>
+    <insert id="zjdx">
+        insert into txl values (#{bh},#{xm},#{dh})
+    </insert>
+    <insert id="txladd">
+        insert into txl values (#{bh},#{xm},#{dh})
+    </insert>
+    <delete id="shanchu">
+        delete from txl where bh=#{bh}
+    </delete>
+    <select id="qsj" resultType="java.lang.String">
+        select dh from txl where bh=#{bh}
+    </select>
+    <select id="qdx" resultType="com.hhxy.domain.Txl">
+        select * from txl where bh=#{bh}
+    </select>
+    <select id="qmap" resultType="java.util.Map">
+        select * from txl where bh=#{bh}
+
+    </select>
+
+<!--    <select id="txlfh" resultType="com.hhxy.domain.TxlFh">-->
+<!--        select bh as bha,xm as xma,dh as dha from txl where bh=#{bh}-->
+<!--    </select>-->
+    <select id="txlfh" resultMap="cyy">
+        select * from txl where bh=#{bh}
+    </select>
+    <select id="qlist" resultType="java.util.Map">
+        select * from txl
+    </select>
+    <select id="cxadd" resultType="com.hhxy.domain.Txl">
+        select * from txl where bh=#{bh}
+    </select>
+    <select id="cxaddd" resultType="java.lang.Integer">
+        select count(*) from txl where bh=#{bh}
+    </select>
+    <select id="quchu" resultType="com.hhxy.domain.Txl">
+        select * from txl
+    </select>
+
+
+</mapper>
